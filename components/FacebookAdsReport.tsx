@@ -136,10 +136,13 @@ const FacebookAdsReport: React.FC<FacebookAdsReportProps> = ({ clientName }) => 
     )
   }
 
-  if (!reportData) {
+  if (!reportData || !reportData.summary || !reportData.top_3_ads) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-600">Nessun dato disponibile</p>
+        <div className="text-center">
+          <p className="text-gray-600 mb-4">Nessun dato disponibile</p>
+          <p className="text-sm text-gray-500">Il report per questo cliente non è ancora stato generato.</p>
+        </div>
       </div>
     )
   }
@@ -193,42 +196,42 @@ const FacebookAdsReport: React.FC<FacebookAdsReportProps> = ({ clientName }) => 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <MetricCard
             title="Investimento"
-            value={`€${reportData.summary.total_spend}`}
+            value={`€${reportData.summary?.total_spend || '0.00'}`}
             icon={<Euro className="w-8 h-8" />}
             color="border-l-green-500"
             tooltip={tooltips.investimento}
           />
           <MetricCard
             title="Click Totali"
-            value={reportData.summary.total_clicks.toLocaleString()}
+            value={(reportData.summary?.total_clicks || 0).toLocaleString()}
             icon={<MousePointer className="w-8 h-8" />}
             color="border-l-blue-500"
             tooltip={tooltips.clickTotali}
           />
           <MetricCard
             title="Persone Raggiunte"
-            value={reportData.summary.total_reach.toLocaleString()}
+            value={(reportData.summary?.total_reach || 0).toLocaleString()}
             icon={<Users className="w-8 h-8" />}
             color="border-l-purple-500"
             tooltip={tooltips.personeRaggiunte}
           />
           <MetricCard
             title="CTR Medio"
-            value={`${reportData.summary.avg_ctr}%`}
+            value={`${reportData.summary?.avg_ctr || '0.00'}%`}
             icon={<TrendingUp className="w-8 h-8" />}
             color="border-l-success-green"
             tooltip={tooltips.ctrMedio}
           />
           <MetricCard
             title="Impressioni"
-            value={reportData.summary.total_impressions.toLocaleString()}
+            value={(reportData.summary?.total_impressions || 0).toLocaleString()}
             icon={<Eye className="w-8 h-8" />}
             color="border-l-orange-500"
             tooltip={tooltips.impressioni}
           />
           <MetricCard
             title="CPC Medio"
-            value={`€${reportData.summary.avg_cpc}`}
+            value={`€${reportData.summary?.avg_cpc || '0.00'}`}
             icon={<Euro className="w-8 h-8" />}
             color="border-l-red-500"
             tooltip={tooltips.cpcMedio}
@@ -243,7 +246,7 @@ const FacebookAdsReport: React.FC<FacebookAdsReportProps> = ({ clientName }) => 
           </div>
           
           <div className="grid gap-6">
-            {reportData.top_3_ads.map((ad, index) => (
+            {(reportData.top_3_ads || []).map((ad, index) => (
               <div key={ad.ad_id} className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
