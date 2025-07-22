@@ -1,8 +1,81 @@
 {
   "client_name": "dame",
-  "report_data": {
-    "period": "Report del 22 luglio 2025"
+  "last_updated": "2025-01-22T18:30:00.000Z",
+  "generated_at": "22 gennaio 2025",
+  "period": "Report del 22 gennaio 2025",
+  "summary": {
+    "total_ads": 3,
+    "total_impressions": 150000,
+    "total_clicks": 3200,
+    "total_spend": "1250.00",
+    "total_reach": 42000,
+    "avg_ctr": "2.13",
+    "avg_cpc": "0.39"
   },
-  "client_report": "Report settimanale delle performance pubblicitarie.",
-  "agency_report": "Report interno: analisi performance cliente."
+  "top_3_ads": [
+    {
+      "ad_id": "dame123456",
+      "ad_name": "Campagna Dame Principale",
+      "clicks": 1500,
+      "ctr": 2.5,
+      "cpc": 0.35,
+      "spend": 525,
+      "impressions": 60000,
+      "reach": 18000
+    },
+    {
+      "ad_id": "dame789012", 
+      "ad_name": "Campagna Dame Secondaria",
+      "clicks": 1000,
+      "ctr": 2.0,
+      "cpc": 0.40,
+      "spend": 400,
+      "impressions": 50000,
+      "reach": 15000
+    },
+    {
+      "ad_id": "dame345678",
+      "ad_name": "Campagna Dame Terziaria", 
+      "clicks": 700,
+      "ctr": 1.8,
+      "cpc": 0.45,
+      "spend": 315,
+      "impressions": 40000,
+      "reach": 9000
+    }
+  ],
+  "all_ads": [
+    {
+      "ad_id": "dame123456",
+      "ad_name": "Campagna Dame Principale",
+      "clicks": 1500,
+      "ctr": 2.5,
+      "cpc": 0.35,
+      "spend": 525,
+      "impressions": 60000,
+      "reach": 18000
+    },
+    {
+      "ad_id": "dame789012",
+      "ad_name": "Campagna Dame Secondaria", 
+      "clicks": 1000,
+      "ctr": 2.0,
+      "cpc": 0.40,
+      "spend": 400,
+      "impressions": 50000,
+      "reach": 15000
+    },
+    {
+      "ad_id": "dame345678",
+      "ad_name": "Campagna Dame Terziaria",
+      "clicks": 700,
+      "ctr": 1.8,
+      "cpc": 0.45,
+      "spend": 315,
+      "impressions": 40000,
+      "reach": 9000
+    }
+  ],
+  "client_report": "Ciao Damè! 🎉 Le tue campagne pubblicitarie stanno andando benissimo questa settimana! Hai raggiunto 42.000 persone con un CTR del 2.13%, che è superiore alla media del settore. La tua campagna principale ha ottenuto risultati fantastici con 1.500 click e un CTR del 2.5%. Ti consiglio di aumentare leggermente il budget su questa campagna per massimizzare i risultati. Ottimo lavoro!",
+  "agency_report": "Report interno Dame: Cliente performante con ROAS positivo. Budget €1.250 utilizzato efficacemente. Campagna principale da scalare (+20% budget). Campagne secondarie necessitano ottimizzazione creatività. CTR medio 2.13% sopra benchmark settore. Considerare test A/B audience lookalike per Q1. Cliente soddisfatto, rinnovo probabile."
 }
