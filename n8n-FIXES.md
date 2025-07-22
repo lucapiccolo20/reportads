@@ -79,8 +79,10 @@ return [{
 
 ### 3. **Final Data Transform** - SOSTITUIRE CODICE COMPLETO:
 
+⚠️ **ATTENZIONE**: Usa i nomi esatti dei nodi come appaiono nel tuo workflow!
+
 ```javascript
-// Ottieni i report da ChatGPT
+// Ottieni i report da ChatGPT (usa i nomi ESATTI dei tuoi nodi!)
 const agencyReport = $node["Message à model"].json.choices[0].message.content;
 const clientReport = $node["Message à model1"].json.choices[0].message.content;
 
@@ -109,6 +111,12 @@ return [{
   json: finalReport
 }];
 ```
+
+⚠️ **SE I NOMI DEI NODI SONO DIVERSI, modifica le righe:**
+- `$node["Message à model"]` → Sostituisci con il nome esatto del primo nodo ChatGPT
+- `$node["Message à model1"]` → Sostituisci con il nome esatto del secondo nodo ChatGPT
+- `$node["Code1"]` → Sostituisci con il nome esatto del nodo Code1
+- `$node["Edit Fields"]` → Sostituisci con il nome esatto del nodo Edit Fields
 
 ---
 
@@ -144,4 +152,21 @@ Con queste correzioni, il workflow:
 
 1. Clona il workflow
 2. Cambia solo `client_name` nel nodo "Edit Fields"
-3. Tutto il resto funziona automaticamente 
+3. Tutto il resto funziona automaticamente
+
+---
+
+## 🚨 **RISOLUZIONE ERRORE "Referenced node doesn't exist":**
+
+L'errore indica che i nomi dei nodi nel codice non corrispondono ai nomi reali.
+
+**Verifica i nomi esatti dei tuoi nodi e sostituisci nel codice:**
+
+1. Clicca su ogni nodo ChatGPT e verifica il nome esatto
+2. Verifica il nome del nodo "Code1" 
+3. Sostituisci nel codice "Final Data Transform" i nomi tra virgolette con quelli corretti
+
+**Esempio**: Se il primo ChatGPT si chiama "ChatGPT", cambia:
+```javascript
+const agencyReport = $node["ChatGPT"].json.choices[0].message.content;
+``` 
