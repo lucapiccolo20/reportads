@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
 
 // Interfacce per i dati del report
 interface ReportData {
@@ -36,23 +34,16 @@ interface RequestPayload {
   agency_report: string
 }
 
-// Directory per salvare i report
-const REPORTS_DIR = path.join(process.cwd(), 'data', 'reports')
-
-// Assicurati che la directory esista
-function ensureReportsDir() {
-  if (!fs.existsSync(REPORTS_DIR)) {
-    fs.mkdirSync(REPORTS_DIR, { recursive: true })
-  }
-}
+// Memory storage per i report (funziona su Vercel)
+const reportStorage = new Map<string, any>()
 
 // Sanitizza il nome del cliente per il filename
 function sanitizeClientName(clientName: string): string {
   return clientName
     .toLowerCase()
-    .replace(/[^a-z0-9]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
+    .replace(/[^\w\s-]/g, '') // Rimuovi caratteri speciali
+    .replace(/[\s_-]+/g, '-') // Sostituisci spazi con trattini
+    .replace(/^-+|-+$/g, '') // Rimuovi trattini all'inizio e alla fine
 }
 
 // GET: Recupera un report specifico
@@ -68,22 +59,19 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    ensureReportsDir()
     const sanitizedName = sanitizeClientName(clientName)
-    const filePath = path.join(REPORTS_DIR, `${sanitizedName}.json`)
+    const report = reportStorage.get(sanitizedName)
 
-    if (!fs.existsSync(filePath)) {
+    if (!report) {
       return NextResponse.json(
         { error: 'Report non trovato' },
         { status: 404 }
       )
     }
 
-    const reportData = JSON.parse(fs.readFileSync(filePath, 'utf8'))
-    
     return NextResponse.json({
       success: true,
-      data: reportData
+      data: report
     })
   } catch (error) {
     console.error('Errore nel recupero del report:', error)
@@ -106,26 +94,23 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    ensureReportsDir()
     const sanitizedName = sanitizeClientName(body.client_name)
-    const filePath = path.join(REPORTS_DIR, `${sanitizedName}.json`)
-
-    // Prepara i dati completi del report
+    
     const fullReportData = {
       client_name: body.client_name,
       last_updated: new Date().toISOString(),
-      generated_at: new Date().toLocaleDateString('it-IT', { 
-        day: 'numeric', 
-        month: 'long', 
-        year: 'numeric' 
+      generated_at: new Date().toLocaleDateString('it-IT', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
       }),
       ...body.report_data,
       client_report: body.client_report,
       agency_report: body.agency_report
     }
 
-    // Salva il report
-    fs.writeFileSync(filePath, JSON.stringify(fullReportData, null, 2))
+    // Salva in memory storage
+    reportStorage.set(sanitizedName, fullReportData)
 
     return NextResponse.json({
       success: true,
@@ -135,6 +120,42 @@ export async function POST(request: NextRequest) {
     })
   } catch (error) {
     console.error('Errore nel salvataggio del report:', error)
+    return NextResponse.json(
+      { error: 'Errore interno del server' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const clientName = searchParams.get('client_name')
+    
+    if (!clientName) {
+      return NextResponse.json(
+        { error: 'Nome cliente richiesto' },
+        { status: 400 }
+      )
+    }
+
+    const sanitizedName = sanitizeClientName(clientName)
+
+    if (!reportStorage.has(sanitizedName)) {
+      return NextResponse.json(
+        { error: 'Report non trovato' },
+        { status: 404 }
+      )
+    }
+
+    reportStorage.delete(sanitizedName)
+
+    return NextResponse.json({
+      success: true,
+      message: 'Report eliminato con successo'
+    })
+  } catch (error) {
+    console.error('Errore nella eliminazione del report:', error)
     return NextResponse.json(
       { error: 'Errore interno del server' },
       { status: 500 }
