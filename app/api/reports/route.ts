@@ -63,19 +63,38 @@ function ensureReportsDir() {
 function getReportData(clientName: string) {
   const sanitizedName = sanitizeClientName(clientName)
   
+  // Lista di possibili varianti da provare
+  const possibleNames = [
+    sanitizedName,                    // "dame"
+    clientName.toLowerCase(),         // "damè" -> "damè"
+    sanitizeClientName(clientName.toLowerCase()), // "damè" -> "dame"
+  ]
+  
+  // Rimuovi duplicati
+  const uniqueNames = [...new Set(possibleNames)]
+  
   // Prova prima da file system
-  try {
-    const filePath = path.join(REPORTS_DIR, `${sanitizedName}.json`)
-    if (fs.existsSync(filePath)) {
-      const fileContent = fs.readFileSync(filePath, 'utf-8')
-      return JSON.parse(fileContent)
+  for (const name of uniqueNames) {
+    try {
+      const filePath = path.join(REPORTS_DIR, `${name}.json`)
+      if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, 'utf-8')
+        return JSON.parse(fileContent)
+      }
+    } catch (error) {
+      console.log(`File ${name}.json non trovato:`, error)
     }
-  } catch (error) {
-    console.log('File non trovato, provo memory storage:', error)
   }
   
   // Fallback a memory storage
-  return reportStorage.get(sanitizedName)
+  for (const name of uniqueNames) {
+    const data = reportStorage.get(name)
+    if (data) {
+      return data
+    }
+  }
+  
+  return null
 }
 
 // Salva report (sia su file che memory storage)
@@ -108,7 +127,9 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const reportData = getReportData(client)
+    // Sanitizza il parametro client per la ricerca del file
+    const sanitizedClient = sanitizeClientName(client)
+    const reportData = getReportData(sanitizedClient)
 
     if (!reportData) {
       return NextResponse.json(
