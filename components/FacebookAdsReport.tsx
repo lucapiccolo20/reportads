@@ -92,7 +92,7 @@ const FacebookAdsReport: React.FC<FacebookAdsReportProps> = ({ clientName }) => 
           throw new Error(result.error || 'Errore nel caricamento del report')
         }
         
-        setReportData(result.data)
+        setReportData(result)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Errore sconosciuto')
       } finally {
