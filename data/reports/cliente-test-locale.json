@@ -1,0 +1,29 @@
+{
+  "client_name": "cliente-test-locale",
+  "last_updated": "2025-07-22T16:48:13.591Z",
+  "generated_at": "22 luglio 2025",
+  "period": "Test Locale",
+  "summary": {
+    "total_ads": 2,
+    "total_impressions": 50000,
+    "total_clicks": 1000,
+    "total_spend": "500.00",
+    "total_reach": 15000,
+    "avg_ctr": "2.0",
+    "avg_cpc": "0.50"
+  },
+  "top_3_ads": [
+    {
+      "ad_id": "test123",
+      "ad_name": "Test Ad",
+      "clicks": 1000,
+      "ctr": 2,
+      "cpc": 0.5,
+      "spend": 500,
+      "impressions": 50000,
+      "reach": 15000
+    }
+  ],
+  "client_report": "Test report per cliente locale",
+  "agency_report": "Test report interno"
+}

@@ -1,0 +1,18 @@
+{
+  "client_name": "test-locale",
+  "last_updated": "2025-07-22T13:24:38.756Z",
+  "generated_at": "22 luglio 2025",
+  "period": "test",
+  "summary": {
+    "total_ads": 1,
+    "total_impressions": 1000,
+    "total_clicks": 50,
+    "total_spend": "10.00",
+    "total_reach": 500,
+    "avg_ctr": "5.0",
+    "avg_cpc": "0.20"
+  },
+  "top_3_ads": [],
+  "client_report": "Test locale",
+  "agency_report": "Test locale"
+}

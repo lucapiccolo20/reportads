@@ -41,5 +41,6 @@ next-env.d.ts
 .DS_Store
 Thumbs.db
 
-# data directory (contains dynamic reports)
-/data/ 
+# data directory (allow reports but ignore temp files)
+/data/.gitkeep
+/data/*.tmp 
