@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .metric-card {
+    @apply bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-xl relative;
+  }
+  
+  .section-card {
+    @apply bg-white rounded-xl shadow-lg p-8 mb-6 transform transition-all duration-300;
+  }
+  
+  .cta-button {
+    @apply inline-flex items-center gap-2 bg-facebook-blue text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  /* Logo styling per sfondi chiari e scuri */
+  .logo-light-bg {
+    filter: invert(1) brightness(0);
+  }
+  
+  .logo-dark-bg {
+    filter: none;
+  }
+  
+  /* Garantisce che i tooltip siano sempre sopra tutto */
+  .tooltip-container {
+    @apply relative;
+    z-index: 10000;
+  }
+} 
