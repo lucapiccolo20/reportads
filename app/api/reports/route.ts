@@ -45,6 +45,8 @@ const REPORTS_DIR = path.join(process.cwd(), 'data', 'reports')
 // Sanitizza il nome del cliente per uso come filename
 function sanitizeClientName(name: string): string {
   return name.toLowerCase()
+    .normalize('NFD') // Decompone i caratteri accentati
+    .replace(/[\u0300-\u036f]/g, '') // Rimuove gli accenti
     .replace(/[^a-z0-9]/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
