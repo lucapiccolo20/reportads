@@ -77,14 +77,38 @@ return [{
 
 ---
 
-### 3. **Final Data Transform** - SOSTITUIRE CODICE COMPLETO:
+### 3. **Final Data Transform** - VERSIONE ROBUSTA CON CONTROLLI:
 
-⚠️ **ATTENZIONE**: Usa i nomi esatti dei nodi come appaiono nel tuo workflow!
+⚠️ **VERSIONE SICURA**: Usa questa versione che gestisce i casi di errore!
 
 ```javascript
-// Ottieni i report da ChatGPT (usa i nomi ESATTI dei tuoi nodi!)
-const agencyReport = $node["Message à model"].json.choices[0].message.content;
-const clientReport = $node["Message à model1"].json.choices[0].message.content;
+// Ottieni i report da ChatGPT con controlli di sicurezza
+let agencyReport = "Report agenzia non disponibile";
+let clientReport = "Report cliente non disponibile";
+
+try {
+  // Prova a ottenere il report agenzia (primo ChatGPT)
+  const agencyNode = $node["Message à model"];
+  if (agencyNode && agencyNode.json && agencyNode.json.choices && agencyNode.json.choices[0]) {
+    agencyReport = agencyNode.json.choices[0].message.content;
+  } else if (agencyNode && agencyNode.json && agencyNode.json.content) {
+    agencyReport = agencyNode.json.content;
+  }
+} catch (error) {
+  console.log("Errore nel recupero report agenzia:", error);
+}
+
+try {
+  // Prova a ottenere il report cliente (secondo ChatGPT)
+  const clientNode = $node["Message à model1"];
+  if (clientNode && clientNode.json && clientNode.json.choices && clientNode.json.choices[0]) {
+    clientReport = clientNode.json.choices[0].message.content;
+  } else if (clientNode && clientNode.json && clientNode.json.content) {
+    clientReport = clientNode.json.content;
+  }
+} catch (error) {
+  console.log("Errore nel recupero report cliente:", error);
+}
 
 // Ottieni i dati processati da Code1
 const reportData = $node["Code1"].json;
@@ -156,8 +180,9 @@ Con queste correzioni, il workflow:
 
 ---
 
-## 🚨 **RISOLUZIONE ERRORE "Referenced node doesn't exist":**
+## 🚨 **RISOLUZIONE ERRORI COMUNI:**
 
+### ❌ **Errore "Referenced node doesn't exist":**
 L'errore indica che i nomi dei nodi nel codice non corrispondono ai nomi reali.
 
 **Verifica i nomi esatti dei tuoi nodi e sostituisci nel codice:**
@@ -169,4 +194,18 @@ L'errore indica che i nomi dei nodi nel codice non corrispondono ai nomi reali.
 **Esempio**: Se il primo ChatGPT si chiama "ChatGPT", cambia:
 ```javascript
 const agencyReport = $node["ChatGPT"].json.choices[0].message.content;
+```
+
+### ❌ **Errore "Cannot read properties of undefined (reading '0')":**
+Significa che ChatGPT non ha ancora generato una risposta o la struttura è diversa.
+
+**Soluzione**: Usa la **versione robusta** del codice "Final Data Transform" sopra che include controlli di sicurezza.
+
+### 🔧 **Strutture alternative di ChatGPT:**
+Se ChatGPT restituisce dati in formato diverso, prova:
+```javascript
+// Invece di: agencyNode.json.choices[0].message.content
+// Prova: agencyNode.json.content
+// O: agencyNode.json.message
+// O: agencyNode.json.text
 ``` 
