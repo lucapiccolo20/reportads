@@ -1,14 +1,14 @@
 {
   "client_name": "Damè",
-  "last_updated": "2025-07-22T21:08:22.706Z",
+  "last_updated": "2025-07-22T21:15:31.747Z",
   "generated_at": "22 luglio 2025",
   "period": "2025-07-15 - 2025-07-22",
   "summary": {
     "total_ads": 11,
-    "total_impressions": 165454,
-    "total_clicks": 993,
-    "total_spend": "138.40",
-    "total_reach": 84577,
+    "total_impressions": 165597,
+    "total_clicks": 994,
+    "total_spend": "138.53",
+    "total_reach": 84627,
     "avg_ctr": "0.32",
     "avg_cpc": "2.97"
   },
@@ -16,76 +16,76 @@
     {
       "ad_id": "120227905669680475",
       "ad_name": "Sere d'estate IT ver 2",
-      "impressions": 63716,
-      "clicks": 789,
-      "spend": 39,
-      "reach": 32927,
-      "frequency": 1.935068,
-      "ctr": 1.238307,
+      "impressions": 63760,
+      "clicks": 790,
+      "spend": 39.05,
+      "reach": 32915,
+      "frequency": 1.937111,
+      "ctr": 1.239021,
       "cpc": 0.04943,
-      "cpp": 1.184438
+      "cpp": 1.186389
     },
     {
       "ad_id": "120227903926970475",
       "ad_name": "Sere d'estate IT ver 1",
-      "impressions": 18418,
+      "impressions": 18450,
       "clicks": 97,
-      "spend": 7.98,
-      "reach": 12729,
-      "frequency": 1.446932,
-      "ctr": 0.526659,
-      "cpc": 0.082268,
-      "cpp": 0.626915
+      "spend": 7.99,
+      "reach": 12739,
+      "frequency": 1.448308,
+      "ctr": 0.525745,
+      "cpc": 0.082371,
+      "cpp": 0.627208
     },
     {
       "ad_id": "120227906820130475",
       "ad_name": "Shopping in vacanza IT ver 1",
-      "impressions": 59279,
+      "impressions": 59327,
       "clicks": 45,
-      "spend": 44.4,
-      "reach": 27041,
-      "frequency": 2.19219,
-      "ctr": 0.075912,
-      "cpc": 0.986667,
-      "cpp": 1.641951
+      "spend": 44.43,
+      "reach": 27033,
+      "frequency": 2.194614,
+      "ctr": 0.075851,
+      "cpc": 0.987333,
+      "cpp": 1.643547
     }
   ],
   "all_ads": [
     {
       "ad_id": "120227905669680475",
       "ad_name": "Sere d'estate IT ver 2",
-      "impressions": 63716,
-      "clicks": 789,
-      "spend": 39,
-      "reach": 32927,
-      "frequency": 1.935068,
-      "ctr": 1.238307,
+      "impressions": 63760,
+      "clicks": 790,
+      "spend": 39.05,
+      "reach": 32915,
+      "frequency": 1.937111,
+      "ctr": 1.239021,
       "cpc": 0.04943,
-      "cpp": 1.184438
+      "cpp": 1.186389
     },
     {
       "ad_id": "120227903926970475",
       "ad_name": "Sere d'estate IT ver 1",
-      "impressions": 18418,
+      "impressions": 18450,
       "clicks": 97,
-      "spend": 7.98,
-      "reach": 12729,
-      "frequency": 1.446932,
-      "ctr": 0.526659,
-      "cpc": 0.082268,
-      "cpp": 0.626915
+      "spend": 7.99,
+      "reach": 12739,
+      "frequency": 1.448308,
+      "ctr": 0.525745,
+      "cpc": 0.082371,
+      "cpp": 0.627208
     },
     {
       "ad_id": "120227906820130475",
       "ad_name": "Shopping in vacanza IT ver 1",
-      "impressions": 59279,
+      "impressions": 59327,
       "clicks": 45,
-      "spend": 44.4,
-      "reach": 27041,
-      "frequency": 2.19219,
-      "ctr": 0.075912,
-      "cpc": 0.986667,
-      "cpp": 1.641951
+      "spend": 44.43,
+      "reach": 27033,
+      "frequency": 2.194614,
+      "ctr": 0.075851,
+      "cpc": 0.987333,
+      "cpp": 1.643547
     },
     {
       "ad_id": "120228801677700475",
@@ -102,14 +102,14 @@
     {
       "ad_id": "120228913944600475",
       "ad_name": "Video2 - 4 idee",
-      "impressions": 5472,
+      "impressions": 5482,
       "clicks": 16,
-      "spend": 5.06,
-      "reach": 4558,
-      "frequency": 1.200527,
-      "ctr": 0.292398,
-      "cpc": 0.31625,
-      "cpp": 1.110136
+      "spend": 5.09,
+      "reach": 4603,
+      "frequency": 1.190962,
+      "ctr": 0.291864,
+      "cpc": 0.318125,
+      "cpp": 1.105801
     },
     {
       "ad_id": "120228967409720475",
@@ -126,14 +126,14 @@
     {
       "ad_id": "120228917057190475",
       "ad_name": "Mercoledì 23 luglio",
-      "impressions": 10807,
+      "impressions": 10808,
       "clicks": 1,
       "spend": 29.24,
-      "reach": 3378,
-      "frequency": 3.19923,
-      "ctr": 0.009253,
+      "reach": 3382,
+      "frequency": 3.195742,
+      "ctr": 0.009252,
       "cpc": 29.24,
-      "cpp": 8.656009
+      "cpp": 8.645772
     },
     {
       "ad_id": "120227906820140475",
@@ -160,11 +160,11 @@
     {
       "ad_id": "120229183794470475",
       "ad_name": "Shopping in vacanza EN ver 3",
-      "impressions": 18,
+      "impressions": 20,
       "clicks": 0,
       "spend": 0,
-      "reach": 15,
-      "frequency": 1.2,
+      "reach": 20,
+      "frequency": 1,
       "ctr": 0,
       "cpc": 0,
       "cpp": 0
@@ -172,14 +172,14 @@
     {
       "ad_id": "120229182314540475",
       "ad_name": "Shopping in vacanza IT ver 3",
-      "impressions": 210,
+      "impressions": 216,
       "clicks": 0,
-      "spend": 0.07,
-      "reach": 201,
-      "frequency": 1.044776,
+      "spend": 0.08,
+      "reach": 207,
+      "frequency": 1.043478,
       "ctr": 0,
       "cpc": 0,
-      "cpp": 0.348259
+      "cpp": 0.386473
     }
   ],
   "client_report": "Report cliente non disponibile",
